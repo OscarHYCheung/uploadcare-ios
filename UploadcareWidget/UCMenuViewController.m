@@ -24,13 +24,10 @@
 @implementation UCMenuViewController
 
 - (id)initWithProgress:(void(^)(NSUInteger bytesSent, NSUInteger bytesExpectedToSend))progress completion:(void(^)(NSString *fileId, NSError *error))completion {
-    self = [super init];
+    self = [super initWithNibName:@"UCMenuViewController" bundle:[NSBundle bundleForClass:UCMenuViewController.self]];
     if (self) {
         self.completionBlock = completion;
         self.progressBlock = progress;
-
-        NSArray *nib = [[NSBundle bundleForClass:UCMenuViewController.self] loadNibNamed:@"UCMenuViewController" owner:self options:nil];
-        self.view = [nib objectAtIndex:0];
     }
     return self;
 }
