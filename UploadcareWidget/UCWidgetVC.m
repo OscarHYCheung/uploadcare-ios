@@ -43,7 +43,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView registerNib:[UINib nibWithNibName:@"UCSocialSourceCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UCSocialSourceCell" bundle:[NSBundle bundleForClass:UCSocialSourceCell.self]] forCellReuseIdentifier:@"cell"];
     self.navigationItem.title = SCREEN_NAME;
     [self fetchSocialSources];
     [self setupNavigationItems];
@@ -63,7 +63,7 @@
     void (^dismissBlock)() = ^void() {
         [weakSelf.navigationController dismissViewControllerAnimated:YES completion:completion];
     };
-    
+
     if ([[NSThread currentThread] isMainThread]) {
         dismissBlock();
     } else {
