@@ -28,6 +28,9 @@
     if (self) {
         self.completionBlock = completion;
         self.progressBlock = progress;
+
+        NSArray *nib = [[NSBundle bundleForClass:UCMenuViewController.self] loadNibNamed:@"UCMenuViewController" owner:self options:nil];
+        self.view = [nib objectAtIndex:0];
     }
     return self;
 }
@@ -53,7 +56,7 @@
     self.socialButton.layer.cornerRadius = self.socialButton.frame.size.height / 2;
     self.socialButton.layer.borderWidth = 1.0;
     self.socialButton.layer.borderColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0].CGColor;
-    
+
     self.localFileButton.layer.cornerRadius = self.localFileButton.frame.size.height / 2;
 }
 
