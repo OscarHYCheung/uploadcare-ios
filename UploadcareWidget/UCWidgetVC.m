@@ -123,7 +123,7 @@
     NSString *socialName = [social.sourceName stringByReplacingCharactersInRange:NSMakeRange(0,1)
                                                               withString:[[social.sourceName substringToIndex:1] capitalizedString]];
     cell.socialName.text = socialName;
-    UIImage *image = [UIImage imageNamed:social.sourceName];
+    UIImage *image = [UIImage imageNamed:social.sourceName inBundle:[NSBundle bundleForClass:UCWidgetVC.self] compatibleWithTraitCollection:nil];
     [cell.socialImage setImage:image];
     return cell;
 }

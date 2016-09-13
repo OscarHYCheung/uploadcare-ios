@@ -18,26 +18,26 @@
         [self.titleLabel setFont:[UIFont boldSystemFontOfSize:[UIFont labelFontSize]]];
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self setBackgroundColor:[UIColor clearColor]];
-        [self setImage:[UIImage imageNamed:@"nav-arrow"] forState:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"nav-arrow" inBundle:[NSBundle bundleForClass:UCNavButton.self] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     UIImageView *imageView = [self imageView];
     UILabel *label = [self titleLabel];
-    
+
     if (imageView && imageView.center.x < label.center.x) {
         CGRect imageFrame = imageView.frame;
         CGRect labelFrame = label.frame;
-        
+
         labelFrame.origin.x = imageFrame.origin.x;
         imageFrame.origin.x = labelFrame.origin.x + CGRectGetWidth(labelFrame);
-        
+
         imageFrame.origin.y = labelFrame.size.height + labelFrame.origin.y - label.font.lineHeight + label.font.xHeight;
-        
+
         imageView.frame = imageFrame;
         label.frame = labelFrame;
     }
